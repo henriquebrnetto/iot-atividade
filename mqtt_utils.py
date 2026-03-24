@@ -1,9 +1,10 @@
 import ssl
 import time
 import paho.mqtt.client as mqtt_client
+from dotenv import load_dotenv
 import os
 
-os.load_dotenv()
+load_dotenv()
 
 broker = os.getenv("BROKER")
 port = os.getenv("PORT")

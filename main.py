@@ -28,5 +28,5 @@ while not False:
         last_state_publish = time.time()
 
     # Subscribe to topic
-    state.subscribe_to_topic(client, topic="iot/atividade/button")
+    state.subscribe_to_topic(client, topic="iot/atividade/reset")
     client.loop_start()
