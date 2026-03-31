@@ -16,6 +16,12 @@ class State:
         self.button_pressed_times = [0] * len(self.leds)
 
     def press_button1(self, client: Optional[mqtt_client.Client] = None, publish: bool = False, topic: str = "iot"):
+        """
+        Button 1 is the first button of the self.buttons list.
+
+        - If the first button is pressed for the first time, turn on the first led.
+        - If the first button is pressed for the second time, turn on the second led.
+        """
         idx = 0
         if self.button_pressed_times[idx] == 0:
             self.leds[idx].on()
@@ -28,8 +34,14 @@ class State:
             publish(client, topic, "Button 1 pressed")
 
     def press_button2(self, client: Optional[mqtt_client.Client] = None, publish: bool = False, topic: str = "iot"):
-        for led in self.leds:
+        """
+        Button 2 is the second button of the self.buttons list.
+
+        - If the second button is pressed, turn off all leds.
+        """
+        for i, led in enumerate(self.leds):
             led.off()
+            self.button_pressed_times[i] = 0
 
         if publish:
             publish(client, topic, "Button 2 pressed")
