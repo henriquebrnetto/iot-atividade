@@ -10,7 +10,7 @@ led_turn_off_topic = "iot/atividade/turnoff"
 class State:
     leds: list[LED]
     buttons: list[Button]
-    button_pressed_times: list[int]
+    button_pressed_times: Optional[list[int]] = None
 
     def __post_init__(self):
         self.button_pressed_times = [0] * len(self.leds)
