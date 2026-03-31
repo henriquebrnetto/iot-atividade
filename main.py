@@ -16,11 +16,11 @@ while not False:
     # If button 1 is pressed once, turn on led 1
     # If button 1 is pressed a second time, turn on led 2
     if state.buttons[0].is_pressed:
-        state.press_button1(client, topic="iot/atividade/button", publish=True)
+        state.press_button1(client, topic="iot/atividade/button", publish_=True)
     
     # If button 2 is pressed once, turn off all leds
     if state.buttons[1].is_pressed:
-        state.press_button2(client, topic="iot/atividade/button", publish=True)
+        state.press_button2(client, topic="iot/atividade/button", publish_=True)
 
     # Publish state every 30 seconds
     if time.time() - last_state_publish >= 30:

@@ -15,7 +15,7 @@ class State:
     def __post_init__(self):
         self.button_pressed_times = [0] * len(self.leds)
 
-    def press_button1(self, client: Optional[mqtt_client.Client] = None, publish: bool = False, topic: str = "iot"):
+    def press_button1(self, client: Optional[mqtt_client.Client] = None, publish_: bool = False, topic: str = "iot"):
         """
         Button 1 is the first button of the self.buttons list.
 
@@ -30,10 +30,10 @@ class State:
             self.leds[idx+1].on()
             self.button_pressed_times[idx] = 0
 
-        if publish:
+        if publish_:
             publish(client, topic, "Button 1 pressed")
 
-    def press_button2(self, client: Optional[mqtt_client.Client] = None, publish: bool = False, topic: str = "iot"):
+    def press_button2(self, client: Optional[mqtt_client.Client] = None, publish_: bool = False, topic: str = "iot"):
         """
         Button 2 is the second button of the self.buttons list.
 
@@ -43,7 +43,7 @@ class State:
             led.off()
             self.button_pressed_times[i] = 0
 
-        if publish:
+        if publish_:
             publish(client, topic, "Button 2 pressed")
 
     def publish_state(self, client: Optional[mqtt_client.Client] = None, topic: str = "iot"):

@@ -15,7 +15,6 @@ ca = os.getenv("CA")
 cert = os.getenv("CERT")
 private = os.getenv("PRIVATE")
 
-
 def ssl_alpn():
     try:
         ssl_context = ssl.create_default_context()
@@ -47,7 +46,7 @@ def connect(state=None):
     client.on_connect = on_connect
     client.on_message = on_message
 
-    client.connect(broker, port)
+    client.connect(broker, int(port))
     return client
 
 
@@ -57,7 +56,7 @@ def publish(client, topic=topic, message=""):
     except Exception as e:
         print("exception publish()")
         raise e
-    
+
     if result[0] == 0:
         print(f"Send `{message}` to topic `{topic}`")
     else:
